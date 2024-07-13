@@ -13,8 +13,8 @@ class MonumentImage(models.Model):
     def __str__(self):
         return self.title
 
-def create_model():
-    model = Sequential([
+    def create_model():
+        model = Sequential([
         Conv2D(32, (3, 3), activation='relu', input_shape=(224, 224, 3)),
         MaxPooling2D((2, 2)),
         Conv2D(64, (3, 3), activation='relu'),
@@ -24,4 +24,5 @@ def create_model():
         Dense(1, activation='sigmoid')  # Example: binary classification
     ])
     
-    return model
+        return model
+

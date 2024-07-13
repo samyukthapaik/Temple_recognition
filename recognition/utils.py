@@ -23,3 +23,8 @@ def predict(image_path):
     # Assuming your model predicts a class, you might want to return class probabilities or labels
     # Modify this according to your model's output
     return predictions
+
+
+
+
+

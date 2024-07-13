@@ -1,0 +1,32 @@
+<!-- recognition/templates/add_training_image.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Training Image - MandirDarpan</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>MandirDarpan</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'upload_image' %}">Home</a></li>
+                <li><a href="{% url 'about_us' %}">About Us</a></li>
+                <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="content">
+            <h2>Add Training Image</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- Form fields for uploading images -->
+                <input type="file" name="training_image">
+                <button type="submit">Upload</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy;

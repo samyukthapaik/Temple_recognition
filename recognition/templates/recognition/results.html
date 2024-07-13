@@ -12,34 +12,29 @@
     </ul>
 </body>
 </html> -->
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Recognition Results</title>
-</head>
-<body>
-    <h1>Recognition Results</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Predicted Class</th>
-                <th>Confidence</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for image in images %}
-            <tr>
-                <td><img src="{{ image.image.url }}" alt="Image" width="100"></td>
-                <td>{{ image.predicted_class }}</td>
-                <td>{{ image.confidence }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-    <a href="{% url 'upload_image' %}">Upload Another Image</a>
-</body>
-</html>
-
+{% extends "base.html" %}
+{% block content %}
+<h1>Recognition Results</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Predicted Class</th>
+            <th>Confidence</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for image in images %}
+        <tr>
+            <td><img src="{{ image.image.url }}" alt="Image" width="200"></td>
+            <td>{{ image.predicted_class }}</td>
+            <td>{{ image.confidence|floatformat:2 }}</td>
+            <td>{{ image.description }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br>
+<a href="{% url 'upload_image' %}">Upload Another Image</a>
+{% endblock %}

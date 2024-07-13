@@ -1,28 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - MandirKhoj</title>
+    <title>Contact Us - MandirDarpan</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <header>
-        <h1>MandirKhoj</h1>
+        <h1>MandirDarpan</h1>
         <nav>
-            <a href="{% url 'upload_image' %}">Upload Image</a>
-            <a href="{% url 'about_us' %}">About Us</a>
-            <a href="{% url 'contact_us' %}">Contact Us</a>
+            <ul>
+                <li><a href="{% url 'upload_image' %}">Upload Image</a></li>
+                <li><a href="{% url 'about_us' %}">About Us</a></li>
+                <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+            </ul>
         </nav>
     </header>
 
-    <div class="container">
-        <h1>Contact Us</h1>
-        <p>If you have any questions, feel free to reach out to us at contact@mandirkhoj.com.</p>
-    </div>
+    <main>
+        <h2>Contact Us</h2>
+        <p>If you have any questions, feel free to contact us at info@mandirdarpan.com.</p>
+    </main>
 
     <footer>
-        <p>&copy; 2024 MandirKhoj. All rights reserved.</p>
+        <p>&copy; 2024 MandirDarpan. All rights reserved.</p>
     </footer>
 </body>
 </html>

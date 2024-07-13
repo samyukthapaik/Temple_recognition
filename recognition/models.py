@@ -5,10 +5,17 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 
+
 class MonumentImage(models.Model):
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='monument_images/')
+    # image = models.ImageField(upload_to='images/')
+    predicted_class = models.CharField(max_length=255, blank=True, null=True)
+    confidence = models.FloatField(blank=True, null=True)
     description = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.image.name
 
     def __str__(self):
         return self.title

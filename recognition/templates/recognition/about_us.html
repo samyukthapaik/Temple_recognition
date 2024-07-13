@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - MandirKhoj</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>MandirKhoj</h1>
+        <nav>
+            <a href="{% url 'upload_image' %}">Upload Image</a>
+            <a href="{% url 'about_us' %}">About Us</a>
+            <a href="{% url 'contact_us' %}">Contact Us</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>About Us</h1>
+        <p>Welcome to MandirKhoj, your go-to platform for temple recognition. Our mission is to help you identify and learn about various temples through the power of image recognition technology.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 MandirKhoj. All rights reserved.</p>
+    </footer>
+</body>
+</html>

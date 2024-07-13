@@ -8,8 +8,7 @@ urlpatterns = [
     path('upload/', views.upload_image, name='upload'),
     path('recognition/', include('recognition.urls')),
     path('add_training_image/', views.add_training_image, name='add_training_image'),
-   
-]
+    ]
 
 
 

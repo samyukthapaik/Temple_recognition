@@ -1,0 +1,61 @@
+recognition codes
+views.py
+
+def upload_view(request):
+    if request.method == 'POST':
+        form = MonumentImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            image_path = form.instance.image.path
+            predictions = make_predictions(image_path)
+            if predictions is not None:
+                return render(request, 'prediction_result.html', {'predictions': predictions})
+            else:
+                error_message = "Failed to make predictions."
+                return render(request, 'upload_form.html', {'form': form, 'error_message': error_message})
+    else:
+        form = MonumentImageForm()
+    
+    return render(request, 'upload_form.html', {'form': form})
+
+def make_predictions(image_path):
+    try:
+        predictions = predict(image_path)
+        return predictions
+    except Exception as e:
+        print(f"Prediction error: {str(e)}")
+        return None
+
+
+def upload_view(request):
+    if request.method == 'POST':
+        form = MonumentImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            # Redirect or render success message
+    else:
+        form = MonumentImageForm()
+    
+    return render(request, 'recognition/upload_form.html', {'form': form})
+
+
+
+def upload_image(request):
+    # Your view logic here
+    return HttpResponse("Upload image view")
+
+
+urls.py temple_recognition
+
+ temple_recognition/urls.py
+
+from django.contrib import admin
+from django.urls import path, include
+from recognition import views
+
+urlpatterns = [
+    
+    path('upload/', views.upload_image, name='upload'),
+      # Assuming your app is named 'recognition'
+    path('add_training_image/', views.add_training_image, name='add_training_image'),
+]       

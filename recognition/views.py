@@ -168,12 +168,17 @@ def upload_image(request):
                 monument_image.description = 'This architectural feature is from a temple.'
             monument_image.save()
 
-            return redirect('results')  # Redirect to results page after successful upload
+            return render(request, 'recognition/result.html', {
+                'predicted_class': predicted_class,
+                'confidence': confidence,
+                'uploaded_file_url': uploaded_file_url,
+                'description': monument_image.description,
+            })
 
         except FileNotFoundError as e:
-            return render(request, 'error.html', {'error_message': f"Error: {e}"})
+            return render(request, 'recognition/error.html', {'error_message': f"Error: {e}"})
         except OSError as e:
-            return render(request, 'error.html', {'error_message': f"Error: {e}"})
+            return render(request, 'recognition/error.html', {'error_message': f"Error: {e}"})
 
     return render(request, 'recognition/upload_image.html')
 

@@ -112,5 +112,29 @@ def load_temple_model():
     model = load_model(model_path)
     return model
 
+def predict(image_path):
+    # Load your temple recognition model
+    model = load_temple_model()
+
+    # Define image preprocessing steps
+    image_size = (224, 224)  # Adjust according to your model's input size
+    img = tf.keras.preprocessing.image.load_img(image_path, target_size=image_size)
+    img_array = tf.keras.preprocessing.image.img_to_array(img)
+    img_array = np.expand_dims(img_array, axis=0)  # Model expects a batch of images
+
+    # Preprocess the input image
+    img_array = tf.keras.applications.mobilenet_v2.preprocess_input(img_array)
+
+    # Make predictions
+    predictions = model.predict(img_array)
+    predicted_class = np.argmax(predictions[0])  # Assuming single prediction
+    confidence = predictions[0][predicted_class]
+
+    # Map prediction index to class label (adjust according to your model's output)
+    class_labels = ['Pillar', 'Arch', 'Other']
+    predicted_class_label = class_labels[predicted_class]
+
+    return predicted_class_label, confidence
+
 
 

@@ -12,7 +12,7 @@
     </ul>
 </body>
 </html> -->
-{% extends "base.html" %}
+<!-- {% extends "base.html" %}
 {% block content %}
 <h1>Recognition Results</h1>
 <table>
@@ -37,4 +37,23 @@
 </table>
 <br>
 <a href="{% url 'upload_image' %}">Upload Another Image</a>
+{% endblock %} -->
+
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temple Recognition Results</title>
+</head>
+<body>
+    <h1>Temple Recognition Results</h1>
+    <p><strong>Uploaded Image:</strong></p>
+    <img src="{{ uploaded_file_url }}" alt="Uploaded Image">
+    <p><strong>Prediction:</strong> {{ predicted_class }}</p>
+    <p><strong>Confidence:</strong> {{ confidence }}</p>
+    <br>
+    <a href="{% url 'upload_image' %}">Upload Another Image</a>
+</body>
+</html>
 {% endblock %}
